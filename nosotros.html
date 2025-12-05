@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosotros - PowerRide</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(to right, #000428, #004e92);
+      color: white;
+      margin: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      padding-bottom: 40px;
+    }
+
+    p.intro {
+      font-size: 20px;
+      max-width: 800px;
+      margin: 20px auto 50px;
+      line-height: 1.6;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid #ffcc00;
+      border-radius: 10px;
+      padding: 20px;
+      backdrop-filter: blur(5px);
+      transition: transform .2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      color: #ffcc00;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 40px;
+      background: white;
+      color: #004e92;
+      padding: 12px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #ffcc00;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sobre Nosotros</h1>
+  </header>
+
+  <div class="container">
+    <p class="intro">
+      PowerRide es una agencia líder con más de 10 años ofreciendo motos de calidad,
+      servicios especializados, atención profesional y financiamiento accesible.
+    </p>
+
+    <h2 style="color:#ffcc00;">👥 Nuestro Equipo</h2>
+
+    <div class="team-grid">
+      <div class="card">
+        <h3>Alumno 1</h3>
+        <p><strong>Cargo:</strong> Diseño Web</p>
+        <p><strong>Correo:</strong> correo1@example.com</p>
+      </div>
+
+      <div class="card">
+        <h3>Alumno 2</h3>
+        <p><strong>Cargo:</strong> Contenido</p>
+        <p><strong>Correo:</strong> correo2@example.com</p>
+      </div>
+
+      <div class="card">
+        <h3>Alumno 3</h3>
+        <p><strong>Cargo:</strong> Programación</p>
+        <p><strong>Correo:</strong> correo3@example.com</p>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn">⬅ Volver al inicio</a>
+  </div>
+
+</body>
+</html>

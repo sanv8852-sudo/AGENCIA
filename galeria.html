@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería - PowerRide</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #f9f9f9; margin: 0; padding: 0; }
+    header { background: #004e92; padding: 20px; color: white; }
+    h1 { margin: 0; }
+    .container { width: 90%; max-width: 1100px; margin: auto; padding: 20px; }
+    p { color: #333; }
+
+    .gallery-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 20px; 
+      margin-top: 30px; 
+    }
+
+    .card { 
+      background: white; 
+      padding: 15px; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .card img { 
+      width: 100%; 
+      height: 170px; 
+      object-fit: cover; 
+      border-radius: 6px; 
+    }
+
+    .btn { 
+      display: inline-block; 
+      margin: 30px auto; 
+      background: #004e92; 
+      color: white; 
+      padding: 12px 25px; 
+      border-radius: 6px; 
+      cursor: pointer; 
+      text-decoration: none; 
+    }
+
+    .btn:hover { background: #ffcc00; color: black; }
+
+    footer { margin-top: 40px; background: #222; padding: 20px; color: white; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Galería PowerRide</h1>
+  </header>
+
+  <div class="container">
+    <p>Mira todas nuestras motos destacadas y fotos de eventos recientes.</p>
+
+    <div class="gallery-grid" id="gallery"></div>
+
+    <button class="btn" id="loadMore">Cargar más motos</button>
+
+    <a href="index.html" class="btn">⬅ Volver al inicio</a>
+  </div>
+
+  <footer>
+    <p>© 2025 PowerRide - Galería oficial</p>
+  </footer>
+
+  <script>
+    const gallery = document.getElementById("gallery");
+    const loadMore = document.getElementById("loadMore");
+
+    const motos = [
+      { img: "moto1.jpg", name: "Honda CB190R" },
+      { img: "moto2.jpg", name: "Yamaha FZ25" },
+      { img: "moto3.jpg", name: "BMW G310R" },
+      { img: "moto4.jpg", name: "Suzuki GSX-S150" },
+      { img: "moto5.jpg", name: "Kawasaki Z400" },
+      { img: "moto6.jpg", name: "Italika DM200" },
+      { img: "moto7.jpg", name: "Ducati Scrambler" },
+      { img: "moto8.jpg", name: "KTM Duke 390" }
+    ];
+
+    let index = 0;
+
+    function cargarMotos() {
+      for (let i = 0; i < 3; i++) {
+        if (index >= motos.length) return;
+        const moto = motos[index];
+
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${moto.img}" alt="${moto.name}">
+          <h3>${moto.name}</h3>
+        `;
+
+        gallery.appendChild(card);
+        index++;
+      }
+    }
+
+    loadMore.addEventListener("click", cargarMotos);
+
+    cargarMotos();
+  </script>
+</body>
+</html>

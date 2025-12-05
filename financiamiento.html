@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financiamiento - PowerRide</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #eef5ff; margin:0; padding:0; }
+    header { background:#004e92; padding:20px; color:white; }
+    h1 { margin:0; }
+    .container { width:90%; max-width:900px; margin:auto; padding:20px; }
+    .plans { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; margin-top:30px; }
+    .card { background:white; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    .card h3 { color:#004e92; }
+    button { margin-top:25px; padding:10px 20px; background:#ffcc00; border:none; border-radius:6px; cursor:pointer; font-weight:bold; }
+    button:hover { background:#e6b800; }
+    a.btn { display:inline-block; margin-top:40px; background:#004e92; color:white; padding:10px 20px; border-radius:6px; text-decoration:none; }
+    a.btn:hover { background:#ffcc00; color:black; }
+    footer { margin-top:40px; background:#222; padding:20px; color:white; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Financiamiento</h1>
+  </header>
+
+  <div class="container">
+    <p>Te ayudamos a estrenar moto con planes de crédito accesibles y personalizados.</p>
+
+    <div class="plans" id="plans">
+      <div class="card">
+        <h3>Plan Inicial</h3>
+        <p>Enganche del 15%<br>Plazos de 6 a 12 meses</p>
+      </div>
+      <div class="card">
+        <h3>Plan Flexible</h3>
+        <p>Enganche del 10%<br>Plazos de hasta 24 meses</p>
+      </div>
+      <div class="card">
+        <h3>Plan Total</h3>
+        <p>Sin enganche<br>Plazos hasta 36 meses</p>
+      </div>
+    </div>
+
+    <button id="loadMore">Mostrar más planes</button>
+
+    <script>
+      const extraPlans = [
+        { nombre:"Plan Joven", desc:"Especial para estudiantes. Plazos de 18 meses." },
+        { nombre:"Plan Empresarial", desc:"Ideal para flotillas corporativas. Tasas preferenciales." },
+        { nombre:"Plan Cero Interés", desc:"Paga tu moto en 6 meses sin intereses." }
+      ];
+
+      let index = 0;
+      const plansContainer = document.getElementById('plans');
+
+      document.getElementById('loadMore').addEventListener('click', () => {
+        if (index < extraPlans.length) {
+          const p = extraPlans[index];
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `<h3>${p.nombre}</h3><p>${p.desc}</p>`;
+          plansContainer.appendChild(card);
+          index++;
+        } else {
+          alert('No hay más planes disponibles');
+        }
+      });
+    </script>
+
+    <a href="index.html" class="btn">⬅ Volver al inicio</a>
+  </div>
+
+  <footer>
+    <p>© 2025 PowerRide - Financiamiento</p>
+  </footer>
+</body>
+</html>
+

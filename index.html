@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motos PowerRide RZ - Inicio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #000428, #004e92);
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+
+    header {
+      padding: 30px 20px 20px 20px;
+      position: relative;
+    }
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    header img {
+      width: 100px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255,255,255,0.4);
+    }
+
+    .marca-rz {
+      font-size: 2.8em;
+      font-weight: bold;
+      color: #ffcc00;
+      text-shadow: 0 0 15px #ffcc00, 0 0 30px #ffaa00;
+      animation: brillo 3s infinite, pulso 2s infinite;
+    }
+    @keyframes brillo {
+      0%, 100% {
+        text-shadow: 0 0 10px #ffcc00, 0 0 25px #ffaa00, 0 0 40px #ff8800;
+      }
+      50% {
+        text-shadow: 0 0 20px #fff700, 0 0 40px #ffcc00, 0 0 60px #ffaa00;
+      }
+    }
+    @keyframes pulso {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    h1 {
+      margin: 10px 0 5px 0;
+      font-size: 2.3em;
+    }
+    p {
+      font-size: 18px;
+    }
+
+    .metafora {
+      margin-top: 15px;
+      font-style: italic;
+      font-size: 17px;
+      opacity: 0.9;
+    }
+
+    .checkbox-container {
+      margin-top: 20px;
+      font-size: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    input[type="checkbox"] {
+      transform: scale(1.3);
+      accent-color: #ffcc00;
+      cursor: pointer;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 900px;
+      margin: 40px auto;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel img {
+      width: 100%;
+      flex-shrink: 0;
+      height: 450px;
+      object-fit: cover;
+    }
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 20px;
+    }
+    .prev:hover, .next:hover {
+      background: rgba(255,255,255,0.7);
+      color: #000;
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 40px;
+    }
+    a {
+      background: white;
+      color: #004e92;
+      padding: 15px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    a:hover {
+      background: #ffcc00;
+      color: #000;
+    }
+
+    .mapa-container {
+      margin: 40px auto;
+      max-width: 900px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+    .mapa-container iframe {
+      width: 100%;
+      height: 450px;
+      border: 0;
+    }
+
+    footer {
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      font-size: 14px;
+    }
+    .footer-rz {
+      color: #ffcc00;
+      font-weight: bold;
+      text-shadow: 0 0 5px #ffaa00;
+    }
+
+    /* --- Ventanita IA --- */
+    #ventanaIA {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #001a3d;
+      border: 2px solid #ffcc00;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      z-index: 9999;
+      box-shadow: 0 0 20px rgba(255, 204, 0, 0.6);
+    }
+    #ventanaIA input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+    #ventanaIA button {
+      margin-top: 10px;
+      background: #ffcc00;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #respuestaIA {
+      margin-top: 10px;
+      color: #ffcc00;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="LOGO.png" alt="Logo PowerRide">
+      <div class="marca-rz">RZ</div>
+    </div>
+
+    <h1>Motos PowerRide</h1>
+    <p>Tu agencia de confianza para motos nuevas, usadas y servicios especializados.</p>
+
+    <div class="metafora">
+      “Cada moto es una extensión del alma; no solo te lleva lejos, te lleva a ti mismo.”
+    </div>
+
+    <div class="checkbox-container">
+      <label><input type="checkbox" id="suscribir"> Deseo recibir promociones y novedades por correo electrónico.</label>
+      <label><input type="checkbox" id="whatsapp"> Contactarme por WhatsApp 📱</label>
+      <label><input type="checkbox" id="ai-motos"> Consultar a la IA sobre motos 🤖</label>
+    </div>
+  </header>
+
+  <!-- 🏍️ Carrusel -->
+  <div class="carousel-container">
+    <div class="carousel" id="carousel">
+      <img src="LOGO4.png" alt="Moto deportiva 1">
+      <img src="LOGO2.png" alt="Moto urbana 2">
+      <img src="LOGO3.png" alt="Moto de trabajo 3">
+    </div>
+    <button class="prev" onclick="moveSlide(-1)">❮</button>
+    <button class="next" onclick="moveSlide(1)">❯</button>
+  </div>
+  
+  <!-- Servicios -->
+<section class="servicios">
+<h2>✔️ Servicios que ofrecemos</h2>
+<ul>
+<li>Venta de motos nuevas</li>
+<li>Venta de motos usadas certificadas</li>
+<li>Financiamiento accesible</li>
+<li>Taller mecánico especializado</li>
+<li>Venta de refacciones originales</li>
+<li>Pruebas de manejo</li>
+<li>Asesoría de seguros</li>
+</ul>
+</section>
+
+  <!-- 🗺️ Mapa -->
+  <section class="mapa-container">
+    <h2>📍 Encuéntranos aquí</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.114344872188!2d-99.17285198463759!3d19.400617286907376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff512b76c6fb%3A0x72f2587f2e7f5f59!2sAngel%20de%20la%20Independencia!5e0!3m2!1ses!2smx!4v1709500000000!5m2!1ses!2smx" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+  <section class="equipo">
+
+  <!-- 💬 Ventana IA -->
+  <div id="ventanaIA">
+    <h3>🤖 IA PowerRide</h3>
+    <p>¿Qué deseas saber sobre motos?</p>
+    <input type="text" id="preguntaIA" placeholder="Escribe tu pregunta aquí...">
+    <button onclick="responderIA()">Preguntar</button>
+    <button onclick="cerrarIA()">Cerrar</button>
+    <p id="respuestaIA"></p>
+  </div>
+
+  <nav>
+    <a href="modelos.html">Modelos</a>
+    <a href="usadas.html">Motos Usadas</a>
+    <a href="taller.html">Taller</a>
+    <a href="refacciones.html">Refacciones</a>
+    <a href="promociones.html">Promociones</a>
+    <a href="financiamiento.html">Financiamiento</a>
+    <a href="galeria.html">Galería</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+
+  <footer>
+    © 2025 Motos PowerRide <span class="footer-rz">RZ</span> | Todos los derechos reservados
+  </footer>
+
+  <script>
+    // --- Carrusel ---
+    let index = 0;
+    const carousel = document.getElementById('carousel');
+    const totalImages = carousel.children.length;
+    function moveSlide(step) {
+      index = (index + step + totalImages) % totalImages;
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+    }
+    setInterval(() => moveSlide(1), 5000);
+
+    // --- WhatsApp ---
+    document.getElementById('whatsapp').addEventListener('change', function() {
+      if (this.checked) {
+        const phone = "5215555555555";
+        const message = "¡Hola! Estoy interesado en una moto PowerRide RZ.";
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+        this.checked = false;
+      }
+    });
+
+    // --- IA sobre motos (abrir ventanita) ---
+    document.getElementById('ai-motos').addEventListener('change', function() {
+      if (this.checked) {
+        document.getElementById("ventanaIA").style.display = "block";
+        this.checked = false;
+      }
+    });
+
+    function cerrarIA() {
+      document.getElementById("ventanaIA").style.display = "none";
+      document.getElementById("respuestaIA").textContent = "";
+      document.getElementById("preguntaIA").value = "";
+    }
+
+function responderIA() {
+  const pregunta = document.getElementById("preguntaIA").value.trim();
+  const respuesta = document.getElementById("respuestaIA");
+  if (!pregunta) {
+    respuesta.textContent = "Por favor, escribe tu pregunta 🏍️";
+    return;
+  }
+
+  let textoRespuesta = "";
+  const p = pregunta.toLowerCase();
+
+  // --- Respuestas automáticas con varias alternativas ---
+  const respuestas = [
+    { keywords: ["modelo", "modelos"], texts: [
+        "Ofrecemos modelos deportivos, urbanos y de trabajo. Visita la sección de Modelos para más información.",
+        "Nuestros modelos se adaptan a tus necesidades: ciudad, carretera o aventura.",
+        "Consulta nuestra galería de modelos para ver todas las opciones disponibles."
+      ]
+    },
+    { keywords: ["precio", "costo"], texts: [
+        "Los precios varían según el modelo y las promociones actuales.",
+        "Consulta nuestra sección de Promociones para conocer los precios actualizados.",
+        "Ofrecemos descuentos especiales en algunos modelos según temporada."
+      ]
+    },
+    { keywords: ["taller", "servicio", "reparación"], texts: [
+        "Contamos con taller especializado para mantenimiento y reparación de motos PowerRide.",
+        "Nuestro taller ofrece servicio rápido y garantía en todas las reparaciones.",
+        "Puedes agendar tu cita en nuestro taller desde la sección de contacto."
+      ]
+    },
+    { keywords: ["financiamiento", "crédito", "pago"], texts: [
+        "Disponemos de opciones de financiamiento flexibles. Consulta la sección de Financiamiento.",
+        "Puedes pagar tu moto en mensualidades adaptadas a tu presupuesto.",
+        "Ofrecemos planes de crédito con tasas competitivas para todos los modelos."
+      ]
+    },
+    { keywords: ["garantía", "garantias"], texts: [
+        "Todas nuestras motos cuentan con garantía limitada de 12 a 24 meses según modelo.",
+        "La garantía cubre piezas y mano de obra en caso de fallas de fábrica.",
+        "Consulta los términos completos de la garantía en la sección de Servicio."
+      ]
+    },
+    { keywords: ["consumo", "combustible", "gasolina"], texts: [
+        "El consumo promedio depende del modelo: entre 25 y 35 km/l.",
+        "Nuestras motos son eficientes, ideales para ciudad y carretera.",
+        "Puedes consultar el rendimiento específico de cada modelo en la sección de Modelos."
+      ]
+    },
+    { keywords: ["velocidad", "rápida", "rapidez"], texts: [
+        "Las velocidades máximas varían: desde 80 km/h en urbanas hasta 180 km/h en deportivas.",
+        "Consulta la ficha técnica de cada modelo para conocer su velocidad máxima.",
+        "Nuestras motos combinan potencia y seguridad en la carretera."
+      ]
+    },
+    { keywords: ["colores", "color"], texts: [
+        "Disponemos de varios colores: rojo, negro, azul, blanco y combinaciones especiales.",
+        "Cada modelo tiene opciones de color que puedes elegir al comprar.",
+        "Visita nuestra galería para ver los colores disponibles en cada modelo."
+      ]
+    },
+    { keywords: ["accesorios", "equipamiento", "extras"], texts: [
+        "Disponemos de accesorios originales: cascos, maletas y protecciones.",
+        "Puedes personalizar tu moto con nuestros accesorios PowerRide.",
+        "Consulta nuestra sección de Refacciones para más detalles sobre los accesorios."
+      ]
+    },
+    { keywords: ["mantenimiento", "cuidado", "revisión"], texts: [
+        "Recomendamos mantenimiento preventivo cada 3,000 km o 3 meses.",
+        "Nuestro taller realiza revisiones completas para mantener tu moto en óptimas condiciones.",
+        "Consulta los planes de mantenimiento disponibles para cada modelo."
+      ]
+    },
+    { keywords: ["seguridad", "frenos", "protección"], texts: [
+        "Nuestras motos incluyen frenos ABS, luces LED y sistemas de seguridad avanzada.",
+        "La seguridad es prioridad: casco, luces y frenos de calidad garantizan tu protección.",
+        "Consulta nuestra guía de seguridad para aprovechar al máximo tu moto."
+      ]
+    },
+    { keywords: ["peso"], texts: [
+        "El peso varía entre 110 y 220 kg según el modelo.",
+        "Consulta la ficha técnica para conocer el peso exacto de cada moto.",
+        "Nuestras motos están diseñadas para un equilibrio óptimo entre peso y maniobrabilidad."
+      ]
+    },
+    { keywords: ["motor"], texts: [
+        "Ofrecemos motores desde 125cc hasta 650cc, potentes y confiables.",
+        "Cada motor está diseñado para brindar eficiencia y durabilidad.",
+        "Consulta la ficha técnica de tu modelo favorito para más detalles del motor."
+      ]
+    },
+    { keywords: ["ruedas", "llantas"], texts: [
+        "Contamos con llantas resistentes, adaptadas a cada modelo.",
+        "Las llantas proporcionan estabilidad y seguridad en todo tipo de terreno.",
+        "Puedes reemplazar las llantas en nuestro taller con piezas originales."
+      ]
+    },
+    { keywords: ["arranque", "inicio"], texts: [
+        "La mayoría de nuestros modelos cuentan con arranque eléctrico.",
+        "Algunos modelos incluyen arranque de patada como respaldo.",
+        "Consulta la ficha técnica para conocer el sistema de arranque de tu moto."
+      ]
+    },
+    { keywords: ["clima", "lluvia", "tiempo"], texts: [
+        "Las motos PowerRide están diseñadas para todas las condiciones climáticas.",
+        "Recubrimientos resistentes al agua protegen tu moto en días lluviosos.",
+        "Puedes conducir con seguridad en lluvia, siempre usando equipo adecuado."
+      ]
+    },
+    { keywords: ["asientos", "comodidad"], texts: [
+        "Asientos ergonómicos y confortables para viajes cortos o largos.",
+        "Algunos modelos incluyen ajuste de altura en el asiento.",
+        "La comodidad es prioridad en todos nuestros diseños."
+      ]
+    },
+    { keywords: ["luz", "faros"], texts: [
+        "Faros LED de alta visibilidad y bajo consumo energético.",
+        "La iluminación de nuestras motos garantiza seguridad nocturna.",
+        "Consulta la ficha técnica para más detalles sobre los faros de cada modelo."
+      ]
+    },
+    { keywords: ["batería"], texts: [
+        "Baterías de larga duración y arranque rápido.",
+        "Algunos modelos incluyen indicador de carga de batería.",
+        "Mantenimiento mínimo para que tu moto siempre esté lista para rodar."
+      ]
+    },
+    { keywords: ["repuestos", "refacciones"], texts: [
+        "Refacciones originales disponibles en nuestro taller.",
+        "Puedes adquirir piezas de reemplazo desde la sección de Refacciones.",
+        "Usar piezas originales garantiza el mejor rendimiento y seguridad."
+      ]
+    },
+    { keywords: ["promociones", "descuento", "oferta"], texts: [
+        "Consulta nuestras promociones vigentes en la sección de Promociones.",
+        "Ofrecemos descuentos especiales por temporada y modelo.",
+        "¡Aprovecha nuestras ofertas antes de que terminen!"
+      ]
+    },
+    { keywords: ["garantía extendida"], texts: [
+        "Ofrecemos planes de garantía extendida según modelo.",
+        "La garantía extendida protege tu inversión por más tiempo.",
+        "Consulta en nuestro taller cómo activar la garantía extendida."
+      ]
+    },
+    { keywords: ["entrega", "envío"], texts: [
+        "Realizamos entrega en tienda o envío a domicilio según disponibilidad.",
+        "Consulta las condiciones de entrega en la sección de contacto.",
+        "Nuestros modelos se entregan listos para conducir."
+      ]
+    },
+    { keywords: ["prueba", "test"], texts: [
+        "Puedes agendar una prueba de manejo en nuestra tienda.",
+        "La prueba de manejo te permitirá sentir la potencia y comodidad de la moto.",
+        "Agenda tu test drive para experimentar tu modelo favorito."
+      ]
+    },
+    { keywords: ["seguro", "aseguradora"], texts: [
+        "Ofrecemos asesoría para contratar seguro de moto.",
+        "Consulta opciones de seguro confiables y adaptadas a tu modelo.",
+        "Protege tu moto con cobertura completa y asistencia vial."
+      ]
+    },
+    { keywords: ["frecuencia", "ruido"], texts: [
+        "Nuestras motos cumplen con normas de emisión y niveles de ruido.",
+        "El motor ha sido diseñado para un rendimiento silencioso y eficiente.",
+        "Consulta la ficha técnica para conocer detalles del sonido del motor."
+      ]
+    },
+    { keywords: ["durabilidad", "vida útil"], texts: [
+        "Las motos PowerRide son reconocidas por su durabilidad y robustez.",
+        "Con mantenimiento adecuado, tu moto tendrá una larga vida útil.",
+        "Todos nuestros componentes son de alta calidad y resistentes al desgaste."
+      ]
+    },
+    { keywords: ["velocidad crucero", "cruise"], texts: [
+        "Algunos modelos incluyen control de velocidad crucero.",
+        "Ideal para viajes largos y conducción cómoda en carretera.",
+        "Consulta tu modelo para ver si incluye esta función."
+      ]
+    },
+    { keywords: ["gps", "navegación"], texts: [
+        "Algunos modelos incluyen GPS integrado o compatibilidad con apps de navegación.",
+        "Consulta nuestra sección de accesorios para agregar GPS a tu moto.",
+        "La navegación moderna está disponible en motos urbanas y deportivas."
+      ]
+    },
+    { keywords: ["luces diurnas", "led"], texts: [
+        "Faros LED y luces diurnas para mayor visibilidad.",
+        "La iluminación de alta eficiencia protege al conductor y al peatón.",
+        "Todos nuestros modelos incluyen iluminación moderna y segura."
+      ]
+    },
+    { keywords: ["eco", "ecológico"], texts: [
+        "Nuestras motos cumplen con normas ambientales y emisiones bajas.",
+        "Modelos eficientes en consumo que reducen la huella de carbono.",
+        "Consulta nuestra sección de modelos ecológicos para más información."
+      ]
+    },
+    { keywords: ["ruido", "sonido"], texts: [
+        "Los motores están diseñados para un rendimiento eficiente y silencioso.",
+        "Cumplen con regulaciones de emisión y ruido en carretera.",
+        "Consulta la ficha técnica para conocer el nivel de sonido de tu moto."
+      ]
+    },
+    { keywords: ["lujo", "premium"], texts: [
+        "Contamos con modelos premium con acabados y accesorios exclusivos.",
+        "Cada moto premium incluye detalles de lujo y confort.",
+        "Consulta la sección de Modelos para ver opciones de lujo disponibles."
+      ]
+    },
+    { keywords: ["garaje", "almacenamiento"], texts: [
+        "Nuestros modelos se adaptan fácilmente a espacios de garaje estándar.",
+        "Consulta accesorios para asegurar tu moto en casa.",
+        "Ofrecemos soluciones de almacenamiento seguro para tu moto."
+      ]
+    }
+  ];
+
+  // --- Selecciona la primera coincidencia y una respuesta aleatoria ---
+  for (let i = 0; i < respuestas.length; i++) {
+    for (let k = 0; k < respuestas[i].keywords.length; k++) {
+      if (p.includes(respuestas[i].keywords[k])) {
+        const opciones = respuestas[i].texts;
+        textoRespuesta = opciones[Math.floor(Math.random() * opciones.length)];
+        break;
+      }
+    }
+    if (textoRespuesta) break;
+  }
+
+  // --- Respuesta por defecto si no se encuentra coincidencia ---
+  if (!textoRespuesta) {
+    textoRespuesta = "🧠 Las motos PowerRide destacan por su potencia, durabilidad y diseño. Tu pregunta fue: \"" + pregunta + "\".";
+  }
+
+  respuesta.textContent = textoRespuesta;
+}
+
+  </script>
+</body>
+</html>

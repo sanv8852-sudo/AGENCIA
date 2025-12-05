@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motos Usadas - PowerRide</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #f7f7f7; margin: 0; padding: 0; }
+    header { background: #004e92; padding: 20px; color: white; }
+    h1 { margin: 0; }
+    .container { width: 90%; max-width: 900px; margin: auto; padding: 20px; }
+    .search { margin: 20px 0; }
+    input[type="text"] { padding: 10px; width: 60%; border-radius: 6px; border: 1px solid #ccc; }
+    .motos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+    .card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .card img { width: 100%; border-radius: 6px; }
+    a.btn { display: inline-block; margin-top: 30px; background: #004e92; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; }
+    a.btn:hover { background: #ffcc00; color: black; }
+    footer { margin-top: 40px; background: #222; padding: 20px; color: white; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Motos Usadas Certificadas</h1>
+  </header>
+
+  <div class="container">
+    <p>Compra con confianza. Todas nuestras motos usadas están revisadas y garantizadas.</p>
+
+    <div class="search">
+      <input type="text" placeholder="Buscar modelo, marca, año...">
+    </div>
+
+    <div class="motos">
+      <div class="card">
+        <img src="moto1.jpg" alt="Moto 1">
+        <h3>Honda CB190R</h3>
+        <p>Año 2021 - 12,000 km</p>
+        <strong>$2,600</strong>
+      </div>
+
+      <div class="card">
+        <img src="moto2.jpg" alt="Moto 2">
+        <h3>Yamaha FZ25</h3>
+        <p>Año 2020 - 18,500 km</p>
+        <strong>$2,900</strong>
+      </div>
+
+      <div class="card">
+        <img src="moto3.jpg" alt="Moto 3">
+        <h3>BMW G310R</h3>
+        <p>Año 2019 - 22,000 km</p>
+        <strong>$4,500</strong>
+      </div>
+          </div>
+
+      <button id="loadMore" style="margin-top:20px; padding:10px 20px; background:#ffcc00; border:none; border-radius:6px; cursor:pointer;">Cargar más motos</button>
+
+      <script>
+        const motosExtra = [
+          { img: 'moto4.jpg', nombre: 'Kawasaki Ninja 300', desc: 'Año 2018 - 15,000 km', precio: '$3,800' },
+          { img: 'moto5.jpg', nombre: 'Suzuki GSX-S150', desc: 'Año 2022 - 5,200 km', precio: '$2,100' },
+          { img: 'moto6.jpg', nombre: 'Ducati Scrambler 800', desc: 'Año 2019 - 19,000 km', precio: '$7,900' }
+        ];
+
+        let index = 0;
+
+        document.getElementById('loadMore').addEventListener('click', () => {
+          const cont = document.querySelector('.motos');
+          if (index < motosExtra.length) {
+            const m = motosExtra[index];
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `<img src="${m.img}" alt="${m.nombre}"> <h3>${m.nombre}</h3> <p>${m.desc}</p> <strong>${m.precio}</strong>`;
+            cont.appendChild(card);
+            index++;
+          } else {
+            alert('No hay más motos disponibles');
+          }
+        });
+      </script>
+
+      <a href="index.html" class="btn">⬅ Volver al inicio</a>
+  </div>
+
+  <footer>
+    <p>© 2025 PowerRide - Motos Usadas Certificadas</p>
+  </footer>
+</body>
+</html>

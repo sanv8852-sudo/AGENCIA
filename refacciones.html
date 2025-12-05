@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refacciones - PowerRide</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #fafafa; margin:0; padding:0; }
+    header { background:#004e92; padding:20px; color:white; }
+    h1 { margin:0; }
+    .container { width:90%; max-width:900px; margin:auto; padding:20px; }
+    .items { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; margin-top:30px; }
+    .card { background:white; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    .card h3 { color:#004e92; }
+    .card img { width:100%; border-radius:6px; }
+    button { margin-top:25px; padding:10px 20px; background:#ffcc00; border:none; border-radius:6px; cursor:pointer; font-weight:bold; }
+    button:hover { background:#e6b800; }
+    a.btn { display:inline-block; margin-top:40px; background:#004e92; color:white; padding:10px 20px; border-radius:6px; text-decoration:none; }
+    a.btn:hover { background:#ffcc00; color:black; }
+    footer { margin-top:40px; background:#222; padding:20px; color:white; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Refacciones y Accesorios</h1>
+  </header>
+
+  <div class="container">
+    <p>Encuentra llantas, cascos, lubricantes y todo lo que tu moto necesita.</p>
+
+    <div class="items" id="items">
+      <div class="card">
+        <img src="llanta.jpg" alt="Llanta">
+        <h3>Llanta Michelin</h3>
+        <p>Medida 120/70/17</p>
+        <strong>$1,850</strong>
+      </div>
+      <div class="card">
+        <img src="casco.jpg" alt="Casco">
+        <h3>Casco HRO</h3>
+        <p>Certificación DOT</p>
+        <strong>$1,200</strong>
+      </div>
+      <div class="card">
+        <img src="aceite.jpg" alt="Aceite">
+        <h3>Aceite Motul 7100</h3>
+        <p>100% sintético 10W-40</p>
+        <strong>$350</strong>
+      </div>
+    </div>
+
+    <button id="loadMore">Mostrar más productos</button>
+
+    <script>
+      const extraItems = [
+        { img:'guantes.jpg', nombre:'Guantes Racing', desc:'Protección completa', precio:'$650' },
+        { img:'cadena.jpg', nombre:'Cadena Reforzada', desc:'Para motos 150-250cc', precio:'$400' },
+        { img:'bateria.jpg', nombre:'Batería Yuasa', desc:'Libre de mantenimiento', precio:'$980' }
+      ];
+
+      let idx = 0;
+      const itemsContainer = document.getElementById('items');
+
+      document.getElementById('loadMore').addEventListener('click', () => {
+        if (idx < extraItems.length) {
+          const it = extraItems[idx];
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `<img src="${it.img}" alt="${it.nombre}"><h3>${it.nombre}</h3><p>${it.desc}</p><strong>${it.precio}</strong>`;
+          itemsContainer.appendChild(card);
+          idx++;
+        } else {
+          alert('No hay más productos disponibles');
+        }
+      });
+    </script>
+
+    <a href="index.html" class="btn">⬅ Volver al inicio</a>
+  </div>
+
+  <footer>
+    <p>© 2025 PowerRide - Refacciones</p>
+  </footer>
+</body>
+</html>

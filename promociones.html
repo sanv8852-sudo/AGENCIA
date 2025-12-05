@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promociones - PowerRide</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #fffbe6; margin:0; padding:0; }
+    header { background:#004e92; padding:20px; color:white; }
+    h1 { margin:0; }
+    .container { width:90%; max-width:900px; margin:auto; padding:20px; }
+    .promos { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; margin-top:30px; }
+    .card { background:white; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    .card h3 { color:#004e92; }
+    .card img { width:100%; border-radius:6px; }
+    button { margin-top:25px; padding:10px 20px; background:#ffcc00; border:none; border-radius:6px; cursor:pointer; font-weight:bold; }
+    button:hover { background:#e6b800; }
+    a.btn { display:inline-block; margin-top:40px; background:#004e92; color:white; padding:10px 20px; border-radius:6px; text-decoration:none; }
+    a.btn:hover { background:#ffcc00; color:black; }
+    footer { margin-top:40px; background:#222; padding:20px; color:white; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Promociones y Descuentos</h1>
+  </header>
+
+  <div class="container">
+    <p>Aprovecha nuestras ofertas especiales de temporada y planes de financiamiento.</p>
+
+    <div class="promos" id="promos">
+      <div class="card">
+        <img src="promo1.jpg" alt="Promo 1">
+        <h3>Descuento del 15%</h3>
+        <p>En modelos 2024 seleccionados.</p>
+      </div>
+      <div class="card">
+        <img src="promo2.jpg" alt="Promo 2">
+        <h3>Casco Gratis</h3>
+        <p>En la compra de una moto nueva.</p>
+      </div>
+      <div class="card">
+        <img src="promo3.jpg" alt="Promo 3">
+        <h3>0% Intereses</h3>
+        <p>Financiamiento a 6 meses.</p>
+      </div>
+    </div>
+
+    <button id="loadMore">Mostrar más promociones</button>
+
+    <script>
+      const extraPromos = [
+        { img:'promo4.jpg', nombre:'Servicio Gratis', desc:'Primer servicio sin costo.' },
+        { img:'promo5.jpg', nombre:'Accesorios -20%', desc:'Descuento en toda la línea de accesorios.' },
+        { img:'promo6.jpg', nombre:'Garantía Extendida', desc:'1 año adicional en tu compra.' }
+      ];
+
+      let index = 0;
+      const promosContainer = document.getElementById('promos');
+
+      document.getElementById('loadMore').addEventListener('click', () => {
+        if (index < extraPromos.length) {
+          const p = extraPromos[index];
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `<img src="${p.img}" alt="${p.nombre}"><h3>${p.nombre}</h3><p>${p.desc}</p>`;
+          promosContainer.appendChild(card);
+          index++;
+        } else {
+          alert('No hay más promociones disponibles');
+        }
+      });
+    </script>
+
+    <a href="index.html" class="btn">⬅ Volver al inicio</a>
+  </div>
+
+  <footer>
+    <p>© 2025 PowerRide - Promociones</p>
+  </footer>
+</body>
+</html>

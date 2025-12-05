@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelos - PowerRide</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(to right, #000428, #004e92);
+      color: white;
+      text-align: center;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #ffcc00;
+      margin-top: 40px;
+      font-size: 42px;
+      text-shadow: 3px 3px 10px black;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .contenedor {
+      max-width: 900px;
+      margin: 30px auto;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      color: #ffcc00;
+      font-size: 28px;
+      margin-top: 25px;
+      text-shadow: 2px 2px 8px black;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      background: white;
+      color: #004e92;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px black;
+    }
+
+    a:hover {
+      background: #ffcc00;
+      color: black;
+    }
+
+    /* GIF que se mueve por toda la pantalla */
+    .gif-flotante {
+      position: absolute;
+      width: 120px;
+      animation: mover 12s linear infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes mover {
+      0% { top: 5%; left: 5%; }
+      25% { top: 20%; left: 80%; }
+      50% { top: 70%; left: 60%; }
+      75% { top: 50%; left: 10%; }
+      100% { top: 10%; left: 40%; }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://i.gifer.com/7VE.gif" class="gif-flotante" alt="Moto GIF">
+
+  <h1>Modelos Disponibles</h1>
+  <p>Velocidad, estilo y rendimiento en cada categoría.</p>
+
+  <div class="contenedor">
+    <h2>🏍️ Deportivas</h2>
+    <p>Modelos pensados para velocidad y adrenalina.</p>
+
+    <h2>🛵 Urbanas</h2>
+    <p>Perfectas para movilidad diaria con eficiencia.</p>
+
+    <h2>🚧 Trabajo</h2>
+    <p>Diseñadas para resistencia y carga continua.</p>
+  </div>
+
+  <a href="index.html">⬅ Volver al inicio</a>
+
+</body>
+</html>
